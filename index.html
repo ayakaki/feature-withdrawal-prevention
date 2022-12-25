@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LP</title>
+    <link rel="stylesheet" href="./assets//css/WithdrawalPrevention.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/js/WithdrawalPrevention.js"></script>
+    <script src="./assets/js/PostForm.js"></script>
+  </head>
+  <body>
+    <h1>LPです</h1>
+    <p>
+      <input type="text" />
+    </p>
+    <p>
+      <button onClick="postForm()">フォームを送信する</button>
+    </p>
+    <div id="preventDialogWrapper" class="prevent_dialog_wrapper">
+      <div class="prevent_dialog">
+        <div class="question_area">
+          <p>最後まで申し込みができていないですが問題ないですか？</p>
+          <p>豊富な特典がたくさんあります</p>
+        </div>
+        <div class="answer_area">
+          <div class="answer_button" id="answerBack">申し込みに戻る</div>
+        </div>
+        <p></p>
+        <p></p>
+      </div>
+    </div>
+  </body>
+</html>
