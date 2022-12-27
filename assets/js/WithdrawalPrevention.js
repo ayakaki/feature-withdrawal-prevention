@@ -1,10 +1,16 @@
 /////////////////////////////////
+// 入力エリアのid候補リスト
+/////////////////////////////////
+
+const INPUT_ELEMENT_IDS = ['username', 'sex', 'address'];
+
+/////////////////////////////////
 // ブラウザバック対策
 /////////////////////////////////
 
 $(() => {
-  $(document).ready(function () {
-    (function (b) {
+  $(document).ready(() => {
+    ((b) => {
       var c = function () {
         this.initialize();
       };
@@ -50,6 +56,29 @@ $(() => {
 /////////////////////////////////
 // タブを閉じる対策
 /////////////////////////////////
-window.onbeforeunload = function (e) {
-  return ' ';
+window.onbeforeunload = (e) => {
+  var isInputed = false;
+  INPUT_ELEMENT_IDS.map((inputElementId) => {
+    if (document.getElementById(inputElementId) === null) return;
+    if (document.getElementById(inputElementId).value.length > 0)
+      isInputed = true;
+  });
+
+  console.log('isInputed->', isInputed);
+
+  // 文字が入力されている場合 -> ブラウザ標準ダイアログを出力
+  if (isInputed) return ' ';
 };
+
+/////////////////////////////////
+// input入力チェック
+/////////////////////////////////
+const isInput = () => {};
+
+// クリックイベント全てに対しての処理
+$(document).on('click touchend', function (event) {
+  // 表示したポップアップ以外の部分をクリックしたとき
+  if (!$(event.target).closest('.prevent_dialog').length) {
+    $('.prevent_dialog_wrapper').hide();
+  }
+});
