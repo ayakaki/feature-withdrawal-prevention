@@ -2,7 +2,7 @@
 // 入力エリアのid候補リスト
 /////////////////////////////////
 
-const INPUT_ELEMENT_IDS = ['username', 'sex', 'address'];
+const INPUT_ELEMENT_IDS = ['userName', 'favoriteColor', 'age'];
 
 /////////////////////////////////
 // ブラウザバック対策
@@ -49,6 +49,7 @@ $(() => {
       // 離脱防止ダイアログ非表示中にブラウザバック押下 -> 離脱防止ダイアログを表示
       history.pushState(null, null, null);
       $('#preventDialogWrapper').show();
+      localStorage.setItem('POSITION_Y', positionY);
     }
   }
 });
@@ -71,9 +72,8 @@ window.onbeforeunload = (e) => {
 };
 
 /////////////////////////////////
-// input入力チェック
+// ダイアログ出力時に、ダイアログ以外の範囲押下でダイアログ非表示
 /////////////////////////////////
-const isInput = () => {};
 
 // クリックイベント全てに対しての処理
 $(document).on('click touchend', function (event) {
@@ -81,4 +81,19 @@ $(document).on('click touchend', function (event) {
   if (!$(event.target).closest('.prevent_dialog').length) {
     $('.prevent_dialog_wrapper').hide();
   }
+});
+
+/////////////////////////////////
+// ダイアログ出力時、元のスクロール位置を再現
+/////////////////////////////////
+
+window.addEventListener('DOMContentLoaded', function () {
+  window.addEventListener('scroll', function () {
+    var positionY = localStorage.getItem('POSITION_Y');
+
+    if (positionY !== null) {
+      document.documentElement.scrollTop = positionY;
+      localStorage.removeItem('POSITION_Y');
+    }
+  });
 });
