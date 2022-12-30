@@ -17,7 +17,15 @@
   <body>
     <h1>LPです</h1>
     <p>
-      <input type="text" id="username" />
+      <p>名前</p>
+      <input type="text" id="userName" autocomplete="name" />
+      <p>好きな色</p>
+      <select name="color" id="favoriteColor">
+        <option >好きな色を選択してください</option>
+        <option value="red">赤</option>
+        <option value="blue">青</option>
+        <option value="yallow">黄</option>
+      </select>
     </p>
     <p>
       <button onClick="postForm()">フォームを送信する</button>
